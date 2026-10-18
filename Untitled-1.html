@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layla's Children Stories</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #eef2f5 0%, #e0eafc 100%);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      color: #2c3e50;
+      min-height: 100vh;
+    }
+
+    /* Top navigation bar */
+    .top-bar {
+      max-width: 1000px;
+      margin: 0 auto 20px auto;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .lang-btn {
+      background-color: #2ecc71;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(46, 204, 113, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .lang-btn:hover {
+      background-color: #27ae60;
+      transform: translateY(-2px);
+    }
+
+    /* Header & Title */
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #2c3e50;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #7f8c8d;
+      margin: 0;
+    }
+
+    /* Stories Grid Container */
+    .stories-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* Story Card */
+    .story-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 20px;
+      width: 320px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .story-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+
+    .story-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
+
+    .story-card h2 {
+      font-size: 1.4rem;
+      color: #34495e;
+      margin: 10px 0 20px 0;
+    }
+
+    /* Read Button */
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 1.05rem;
+      box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: linear-gradient(135deg, #2980b9 0%, #1c5980 100%);
+      box-shadow: 0 6px 15px rgba(52, 152, 219, 0.4);
+    }
+  </style>
+</head>
+<body>
+
+<div class="top-bar">
+  <a href="index.html" class="lang-btn">🌐 العربية</a>
+</div>
+
+<header>
+  <h1>📚 Layla's Children Stories</h1>
+  <p>Warm stories filled with love and imagination ✨</p>
+</header>
+
+<div class="stories-container">
+
+  <!-- Solomon's Ring Story Card -->
+  <div class="story-card">
+    <div>
+      <img src="خاتم سليمان/11.jpeg" alt="Solomon's Ring">
+      <h2>🌸 Solomon's Ring</h2>
+    </div>
+    <a href="خاتم سليمان/soliman.html" target="_blank" class="btn">Read the Story</a>
+  </div>
+
+  <!-- Zarda the Little Bird Story Card -->
+  <div class="story-card">
+    <div>
+      <img src="زئرده/1.jpeg" alt="Zarda the Little Bird">
+      <h2>🐦 Zarda the Little Bird</h2>
+    </div>
+    <a href="زئرده/zarda.html" target="_blank" class="btn">Read the Story</a>
+  </div>
+
+  <!-- Lily and the Gift of Health Story Card -->
+  <div class="story-card">
+    <div>
+      <img src="ليلي ونعمة الصحه/1.jpeg" alt="Lily and the Gift of Health">
+      <h2>👧 Lily and the Gift of Health</h2>
+    </div>
+    <a href="ليلي ونعمة الصحه/lily_en.html" target="_blank" class="btn">Read the Story</a>
+  </div>
+
+  <!-- Luna and the High Hill Story Card -->
+  <div class="story-card">
+    <div>
+      <img src="لونا والتل العالي/12.jpeg" alt="Luna and the High Hill">
+      <h2>⛰️ Luna and the High Hill</h2>
+    </div>
+    <a href="لونا والتل العالي/luna_en.html" target="_blank" class="btn">Read the Story</a>
+  </div>
+
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
