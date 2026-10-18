@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>زئردة العصفورة الصغيرة - قصص ليلى للأطفال</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-color: #eef2f5;
+      font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    
+    .story-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 25px;
+      padding: 10px 22px;
+      background-color: #3498db;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    /* الإطار العام لكل صفحة */
+    .book-spread {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+      margin-bottom: 45px;
+      align-items: stretch;
+    }
+
+    /* قسم النص */
+    .text-page {
+      padding: 40px 35px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .page-num {
+      align-self: flex-start;
+      background: rgba(231, 76, 60, 0.9);
+      color: white;
+      padding: 4px 14px;
+      border-radius: 15px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .text-page h3 {
+      font-size: 1.45rem;
+      margin-top: 0;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #f1c40f;
+      padding-bottom: 8px;
+      display: inline-block;
+    }
+
+    .text-page p {
+      font-size: 1.2rem;
+      line-height: 1.9;
+      margin: 10px 0;
+      font-weight: 600;
+    }
+
+    /* قسم الرسمة */
+    .image-page {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .image-page img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* =========================================================
+       تخصيص خلفية كل صفحة بالضبط لتطابق ألوان الصورة الخاصة بها
+       ========================================================= */
+
+    /* الصفحة 1: أخضر شجري دافئ مع أصفر دافئ (العش والشجرة) */
+    .page-1 {
+      background: linear-gradient(135deg, #a1c349 0%, #7d9e2b 100%);
+    }
+    .page-1 .text-page { color: #172a05; }
+
+    /* الصفحة 2: أخضر زيتي مائل للغابة الكثيفة */
+    .page-2 {
+      background: linear-gradient(135deg, #789252 0%, #516931 100%);
+    }
+    .page-2 .text-page { color: #f2f7eb; }
+    .page-2 .text-page h3 { color: #ffffff; }
+
+    /* الصفحة 3: ألوان الغابة الخضراء مع درجة الأرنب الرمادي والبيج */
+    .page-3 {
+      background: linear-gradient(135deg, #819859 0%, #607241 100%);
+    }
+    .page-3 .text-page { color: #f4f8ed; }
+    .page-3 .text-page h3 { color: #ffffff; }
+
+    /* الصفحة 4: أصفر الذرة الذهبي مع الأخضر النضير */
+    .page-4 {
+      background: linear-gradient(135deg, #f3ca40 0%, #e09f1f 100%);
+    }
+    .page-4 .text-page { color: #301f01; }
+
+    /* الصفحة 5: أزرق النهر الحركي والمطاردة */
+    .page-5 {
+      background: linear-gradient(135deg, #59a5d8 0%, #386fa4 100%);
+    }
+    .page-5 .text-page { color: #ffffff; }
+    .page-5 .text-page h3 { color: #ffe600; }
+
+    /* الصفحة 6: فيروزي النهر الشفاف والدولفين */
+    .page-6 {
+      background: linear-gradient(135deg, #70c1b3 0%, #247ba0 100%);
+    }
+    .page-6 .text-page { color: #ffffff; }
+
+    /* الصفحة 7: أزرق ليلي وكحلي مظلم للغابة ليلاً */
+    .page-7 {
+      background: linear-gradient(135deg, #1b263b 0%, #0d1b2a 100%);
+    }
+    .page-7 .text-page { color: #e0e1dd; }
+    .page-7 .text-page h3 { color: #ffffff; }
+
+    /* الصفحة 8: بني دافئ وجوزي لخلفية جحر السنجاب */
+    .page-8 {
+      background: linear-gradient(135deg, #ba8b5b 0%, #8c5a2b 100%);
+    }
+    .page-8 .text-page { color: #fff8f0; }
+
+    /* الصفحة 9: أخضر مشرق مع الأصفر الذهبي لشروق الغابة والبومة */
+    .page-9 {
+      background: linear-gradient(135deg, #aacc62 0%, #85a33d 100%);
+    }
+    .page-9 .text-page { color: #1c2b03; }
+
+    /* الصفحة 10: أصفر مشرق وفرح برؤية العلم الأصفر */
+    .page-10 {
+      background: linear-gradient(135deg, #f7ce3e 0%, #dca11d 100%);
+    }
+    .page-10 .text-page { color: #312000; }
+
+    /* الصفحة 11: بني العش الدافئ وألوان عناق الأم */
+    .page-11 {
+      background: linear-gradient(135deg, #d4a373 0%, #a97142 100%);
+    }
+    .page-11 .text-page { color: #3a1c02; }
+
+    /* الصفحة 12: مشمشي وزهري دافئ للدرس والختام السعيد */
+    .page-12 {
+      background: linear-gradient(135deg, #f4a261 0%, #e76f51 100%);
+    }
+    .page-12 .text-page { color: #ffffff; }
+    .page-12 .text-page h3 { color: #ffe600; }
+
+    /* التكيف مع شاشات الموبايل */
+    @media (max-width: 768px) {
+      .book-spread {
+        grid-template-columns: 1fr;
+      }
+      .image-page img {
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="story-container">
+
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+  <a href="../index.html" class="back-btn" style="margin-bottom: 0;">⬅️ العودة للرئيسية</a>
+  <a href="zarda.html" style="background-color: #2ecc71; color: white; padding: 10px 18px; text-decoration: none; border-radius: 8px; font-weight: bold;">🌐 Read in English</a>
+</div>
+
+  <header style="text-align: center; margin-bottom: 30px;">
+    <h1 style="color: #2c3e50;">🐦 زئردة العصفورة الصغيرة</h1>
+  </header>
+
+  <!-- الصفحة 1 -->
+  <div class="book-spread page-1">
+    <div class="text-page">
+      <span class="page-num">صفحة 1</span>
+      <h3>الصفحة 1 — العصفورة المشاغبة</h3>
+      <p>في غابة جميلة، كانت تعيش عصفورة صغيرة اسمها زئردة مع أمها في عش دافئ فوق شجرة كبيرة.</p>
+      <p>كانت زئردة تحب الطيران واللعب واستكشاف كل مكان في الغابة.</p>
+      <p>لكن أمها كانت دائمًا تقول لها: «يا زئردة، لا تبتعدي كثيرًا عن العش، حتى لا تتوهي.»</p>
+      <p>فتجيبها زئردة: «حاضر يا أمي!» لكنها في الحقيقة لم تكن تستمع جيدًا إلى كلام أمها.</p>
+    </div>
+    <div class="image-page">
+      <img src="1.jpeg" alt="الصفحة 1: العصفورة المشاغبة">
+    </div>
+  </div>
+
+  <!-- الصفحة 2 -->
+  <div class="book-spread page-2">
+    <div class="text-page">
+      <span class="page-num">صفحة 2</span>
+      <h3>الصفحة 2 — أين ذهبت زئردة؟</h3>
+      <p>في يوم من الأيام، كانت زئردة تلعب بالقرب من العش، فرأت دودة صغيرة تزحف بين الأعشاب. قالت بسعادة: «سأطير خلفها!»</p>
+      <p>وظلت تطير وراء الدودة من مكان إلى آخر، حتى ابتعدت كثيرًا عن عشها دون أن تشعر.</p>
+      <p>وفجأة توقفت زئردة ونظرت حولها. لم تجد العش! قالت بخوف: «يا إلهي! أين أنا؟ لقد تاهت مني الطريق!»</p>
+    </div>
+    <div class="image-page">
+      <img src="2.jpeg" alt="الصفحة 2: أين ذهبت زئردة؟">
+    </div>
+  </div>
+
+  <!-- الصفحة 3 -->
+  <div class="book-spread page-3">
+    <div class="text-page">
+      <span class="page-num">صفحة 3</span>
+      <h3>الصفحة 3 — الأرنب اللطيف</h3>
+      <p>بدأت زئردة تمشي بين الأشجار وهي تبكي. وبعد قليل، قابلت أرنبًا لطيفًا.</p>
+      <p>سألها الأرنب: «لماذا تبكين أيتها العصفورة الصغيرة؟»</p>
+      <p>قالت زئردة: «أنا تائهة ولا أعرف كيف أعود إلى بيتي.»</p>
+      <p>فكر الأرنب قليلًا ثم سألها: «هل تتذكرين شيئًا كان قريبًا من عشكم؟»</p>
+      <p>قالت زئردة: «نعم! كان بجانب عشّنا علم أصفر.»</p>
+      <p>ابتسم الأرنب وقال: «لا تقلقي، سأساعدك في العودة إلى بيتك.»</p>
+    </div>
+    <div class="image-page">
+      <img src="Gemini_Generated_Image_jdcnspjdcnspjdcn (3).jpeg" alt="الصفحة 3: الأرنب اللطيف">
+    </div>
+  </div>
+
+  <!-- الصفحة 4 -->
+  <div class="book-spread page-4">
+    <div class="text-page">
+      <span class="page-num">صفحة 4</span>
+      <h3>الصفحة 4 — العصفورة الجائعة</h3>
+      <p>ظل الأرنب وزئردة يمشيان في الغابة بحثًا عن الطريق. وبعد وقت طويل قالت زئردة: «أنا جائعة جدًا!»</p>
+      <p>قال الأرنب: «أعرف مزرعة صغيرة بجانب النهر، فيها ذرة لذيذة. تعالي، نأكل قليلًا ثم نكمل طريقنا.»</p>
+      <p>ذهبا معًا إلى المزرعة، وبدأا يأكلان الذرة. لكن فجأة... سمعا صوتًا عاليًا! «هوووو! ابتعدا عن المزرعة!»</p>
+      <p>كان كلب الحراسة قد رآهما وبدأ يركض خلفهما.</p>
+    </div>
+    <div class="image-page">
+      <img src="Gemini_Generated_Image_jdcnspjdcnspjdcn (4).jpeg" alt="الصفحة 4: العصفورة الجائعة">
+    </div>
+  </div>
+
+  <!-- الصفحة 5 -->
+  <div class="book-spread page-5">
+    <div class="text-page">
+      <span class="page-num">صفحة 5</span>
+      <h3>الصفحة 5 — في النهر!</h3>
+      <p>خاف الأرنب وزئردة وبدآ يجريان بأقصى سرعة. لكن دون أن ينتبها... وصلا إلى حافة النهر! وفجأة سقطا في الماء.</p>
+      <p>حاولت زئردة الطيران، لكن جناحها اصطدم بحجر وأُصيب. صرخت: «آه! جناحي يؤلمني!»</p>
+      <p>كان الأرنب أيضًا متعبًا ولا يستطيع السباحة جيدًا.</p>
+    </div>
+    <div class="image-page">
+      <img src="Gemini_Generated_Image_jdcnspjdcnspjdcn (5).jpeg" alt="الصفحة 5: في النهر!">
+    </div>
+  </div>
+
+  <!-- الصفحة 6 -->
+  <div class="book-spread page-6">
+    <div class="text-page">
+      <span class="page-num">صفحة 6</span>
+      <h3>الصفحة 6 — صديق من النهر</h3>
+      <p>وبينما كانا يحاولان النجاة، ظهر دولفين لطيف. اقترب منهما بسرعة وساعدهما على الخروج من الماء، وأوصلهما إلى الشاطئ بأمان.</p>
+      <p>قال الأرنب لزئردة: «أنا آسف يا زئردة، لقد أُصبت وتعبت كثيرًا، ولن أستطيع أن أكمل معك. سأعود إلى بيتي.»</p>
+      <p>حزنت زئردة، لكنها قالت: «شكرًا لك لأنك ساعدتني.» ثم تابعت طريقها وحدها.</p>
+    </div>
+    <div class="image-page">
+      <img src="Gemini_Generated_Image_jdcnspjdcnspjdcn (6).jpeg" alt="الصفحة 6: صديق من النهر">
+    </div>
+  </div>
+
+  <!-- الصفحة 7 -->
+  <div class="book-spread page-7">
+    <div class="text-page">
+      <span class="page-num">صفحة 7</span>
+      <h3>الصفحة 7 — ليلة في الغابة</h3>
+      <p>ظلت زئردة تمشي وتمشي، حتى بدأ الليل يحل. كانت الغابة مظلمة، وبدأت تخاف من الحيوانات المفترسة.</p>
+      <p>نظرت حولها حتى وجدت جحرًا صغيرًا داخل شجرة. قالت: «سأبيت هنا حتى يأتي الصباح.»</p>
+      <p>دخلت زئردة إلى الجحر ونامت وهي تشعر بالتعب والخوف.</p>
+    </div>
+    <div class="image-page">
+      <img src="Gemini_Generated_Image_jdcnspjdcnspjdcn (7).jpeg" alt="الصفحة 7: ليلة في الغابة">
+    </div>
+  </div>
+
+  <!-- الصفحة 8 -->
+  <div class="book-spread page-8">
+    <div class="text-page">
+      <span class="page-num">صفحة 8</span>
+      <h3>الصفحة 8 — السنجاب</h3>
+      <p>عندما أشرقت الشمس، استيقظت زئردة. وفجأة وجدت سنجابًا صغيرًا ينظر إليها بدهشة. قال: «من أنتِ؟ وماذا تفعلين في بيتي؟»</p>
+      <p>اعتذرت زئردة وحكت له كل ما حدث معها منذ أن ابتعدت عن عشها.</p>
+      <p>استمع السنجاب إليها وقال: «لا تقلقي، ربما أستطيع مساعدتك!» ثم فكر قليلًا وقال: «لدي صديقة بومة تعرف كل أماكن الغابة، سأذهب وأسألها.»</p>
+    </div>
+    <div class="image-page">
+      <img src="Gemini_Generated_Image_jdcnspjdcnspjdcn (8).jpeg" alt="الصفحة 8: السنجاب">
+    </div>
+  </div>
+
+  <!-- الصفحة 9 -->
+  <div class="book-spread page-9">
+    <div class="text-page">
+      <span class="page-num">صفحة 9</span>
+      <h3>الصفحة 9 — البومة تعرف الطريق</h3>
+      <p>طار السنجاب سريعًا وأخبر البومة بقصة زئردة.</p>
+      <p>فكرت البومة قليلًا وقالت: «علم أصفر بالقرب من عش عصفورة؟ أعتقد أنني أعرف المكان!»</p>
+      <p>ثم قالت: «تعالوا معي، سأوصلكم إلى هناك.» فرحت زئردة كثيرًا، وبدأت تسير مع السنجاب والبومة.</p>
+    </div>
+    <div class="image-page">
+      <img src="Gemini_Generated_Image_jdcnspjdcnspjdcn (9).jpeg" alt="الصفحة 9: البومة تعرف الطريق">
+    </div>
+  </div>
+
+  <!-- الصفحة 10 -->
+  <div class="book-spread page-10">
+    <div class="text-page">
+      <span class="page-num">صفحة 10</span>
+      <h3>الصفحة 10 — العودة إلى البيت</h3>
+      <p>طارت البومة فوق الأشجار، وتبعها السنجاب وزئردة حتى وصلوا إلى مكان تعرفه زئردة.</p>
+      <p>وفجأة رأت شيئًا أصفر يلمع بين الأشجار. صرخت بسعادة: «العلم الأصفر! هذا هو! لقد وجدنا بيتي!»</p>
+      <p>أسرعت زئردة نحو عشها.</p>
+    </div>
+    <div class="image-page">
+      <img src="Gemini_Generated_Image_jdcnspjdcnspjdcn (10).jpeg" alt="الصفحة 10: العودة إلى البيت">
+    </div>
+  </div>
+
+  <!-- الصفحة 11 -->
+  <div class="book-spread page-11">
+    <div class="text-page">
+      <span class="page-num">صفحة 11</span>
+      <h3>الصفحة 11 — حضن الأم</h3>
+      <p>ما إن رأت أم زئردة ابنتها حتى طارت إليها بسرعة واحتضنتها. كانت الأم تبكي من شدة الفرح.</p>
+      <p>وقالت: «زئردة! أين كنتِ؟ لقد كنت قلقة عليكِ جدًا!»</p>
+      <p>بكت زئردة أيضًا وقالت: «أنا آسفة يا أمي. لقد أخطأت عندما ابتعدت عن العش ولم أسمع كلامك. أعدك أنني لن أبتعد وحدي مرة أخرى، وسأستمع إلى نصائحك.»</p>
+      <p>ابتسمت الأم واحتضنتها أكثر وقالت: «أهم شيء أنك عدتِ إليّ سالمة يا صغيرتي.»</p>
+    </div>
+    <div class="image-page">
+      <img src="Gemini_Generated_Image_jdcnspjdcnspjdcn (11).jpeg" alt="الصفحة 11: حضن الأم">
+    </div>
+  </div>
+
+  <!-- الصفحة 12 -->
+  <div class="book-spread page-12">
+    <div class="text-page">
+      <span class="page-num">صفحة 12</span>
+      <h3>الصفحة 12 — الدرس الجميل 🌸</h3>
+      <p>ومنذ ذلك اليوم، تعلمت زئردة درسًا مهمًا: عرفت أن الاستماع إلى نصائح الأم والأب يحمي الأطفال من الأخطار، وأن طلب المساعدة من الأشخاص الطيبين يمكن أن يساعدنا عندما نقع في مشكلة.</p>
+      <p style="margin-top: 15px; font-weight: bold;">وعاشت زئردة مع أمها في عشهما الصغير... وكانت كلما أرادت أن تطير بعيدًا تقول: «سأستأذن أمي أولًا!» 🐦💗</p>
+    </div>
+    <div class="image-page">
+      <img src="Gemini_Generated_Image_jdcnspjdcnspjdcn (12).jpeg" alt="الصفحة 12: الدرس الجميل">
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

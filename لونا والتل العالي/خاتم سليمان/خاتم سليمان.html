@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>خاتم سليمان - قصص ليلى للأطفال</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-color: #eef2f5;
+      font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    
+    .story-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 25px;
+      padding: 10px 22px;
+      background-color: #3498db;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .back-btn:hover {
+      background-color: #2980b9;
+    }
+
+    /* الإطار العام لكل صفحة (صفحتين قصاد بعض كلوحة واحدة) */
+    .book-spread {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+      margin-bottom: 45px;
+      align-items: stretch;
+    }
+
+    /* قسم النص */
+    .text-page {
+      padding: 40px 35px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .page-num {
+      align-self: flex-start;
+      background: rgba(231, 76, 60, 0.9);
+      color: white;
+      padding: 4px 14px;
+      border-radius: 15px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .text-page h3 {
+      font-size: 1.45rem;
+      margin-top: 0;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #f1c40f;
+      padding-bottom: 8px;
+      display: inline-block;
+    }
+
+    .text-page p {
+      font-size: 1.2rem;
+      line-height: 1.9;
+      margin: 10px 0;
+      font-weight: 600;
+    }
+
+    /* قسم الرسمة */
+    .image-page {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .image-page img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* =========================================================
+       تخصيص خلفية كل صفحة لتقترب من أجواء ألوان الصورة
+       ========================================================= */
+
+    /* الصفحة 1: ضفة النهر الهادئ */
+    .page-1 { background: linear-gradient(135deg, #a2d2ff 0%, #bde0fe 100%); }
+    .page-1 .text-page { color: #102a43; }
+
+    /* الصفحة 2: البيت الصغير والزهور */
+    .page-2 { background: linear-gradient(135deg, #fbe4e8 0%, #ecd7d7 100%); }
+    .page-2 .text-page { color: #4a1525; }
+
+    /* الصفحة 3: وداع الأم */
+    .page-3 { background: linear-gradient(135deg, #e8e8e4 0%, #d8e2dc 100%); }
+    .page-3 .text-page { color: #2b2d42; }
+
+    /* الصفحة 4: التلويح بابتسامة */
+    .page-4 { background: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 100%); }
+    .page-4 .text-page { color: #590d22; }
+
+    /* الصفحة 5: فكرة الصيد */
+    .page-5 { background: linear-gradient(135deg, #90e0ef 0%, #48cae4 100%); }
+    .page-5 .text-page { color: #03045e; }
+    .page-5 .text-page h3 { color: #ffffff; }
+
+    /* الصفحة 6: الغناء قرب الماء */
+    .page-6 { background: linear-gradient(135deg, #d8f3dc 0%, #b7e4c7 100%); }
+    .page-6 .text-page { color: #1b4332; }
+
+    /* الصفحة 7: اهتزاز الصنارة */
+    .page-7 { background: linear-gradient(135deg, #caf0f8 0%, #00b4d8 100%); }
+    .page-7 .text-page { color: #03045e; }
+    .page-7 .text-page h3 { color: #ffb703; }
+
+    /* الصفحة 8: سمكة قوس قزح */
+    .page-8 { background: linear-gradient(135deg, #e0c3fc 0%, #8ecae6 100%); }
+    .page-8 .text-page { color: #2b0854; }
+
+    /* الصفحة 9: الخاتم الذهبي العجيب */
+    .page-9 { background: linear-gradient(135deg, #fff3b0 0%, #e0a96d 100%); }
+    .page-9 .text-page { color: #3e2723; }
+
+    /* الصفحة 10: خاتم الحكمة يتكلم */
+    .page-10 { background: linear-gradient(135deg, #fde2e4 0%, #ffcad4 100%); }
+    .page-10 .text-page { color: #4a0e17; }
+
+    /* الصفحة 11: أمنية الخاتم */
+    .page-11 { background: linear-gradient(135deg, #ffd166 0%, #f4a261 100%); }
+    .page-11 .text-page { color: #2b1700; }
+
+    /* الصفحة 12: أمنية ليلى الطيبة */
+    .page-12 { background: linear-gradient(135deg, #cdb4db 0%, #ffc8dd 100%); }
+    .page-12 .text-page { color: #3c096c; }
+
+    /* الصفحة 13: الضوء الساحر */
+    .page-13 { background: linear-gradient(135deg, #f0efe6 0%, #e1dabd 100%); }
+    .page-13 .text-page { color: #3d3a2a; }
+
+    /* الصفحة 14: عودة الأم بالصحة والخير */
+    .page-14 { background: linear-gradient(135deg, #d8f3dc 0%, #f72585 100%); }
+    .page-14 .text-page { color: #2b0938; }
+
+    /* الصفحة 15: الختام والدرس الجميل */
+    .page-15 { background: linear-gradient(135deg, #ffcad4 0%, #b5e2fa 100%); }
+    .page-15 .text-page { color: #1d3557; }
+
+    /* التكيف مع الموبايل */
+    @media (max-width: 768px) {
+      .book-spread {
+        grid-template-columns: 1fr;
+      }
+      .image-page img {
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+ <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+  <a href="../index.html"class="back-btn" style="margin-bottom: 0;">⬅️ العودة للرئيسية</a>
+  <a href="soliman.html" style="background-color: #2ecc71; color: white; padding: 10px 18px; text-decoration: none; border-radius: 8px; font-weight: bold;">🌐 Read in English</a>
+</div>
+  <header style="text-align: center; margin-bottom: 30px;">
+    <h1 style="color: #2c3e50;">🌸 خاتم سليمان</h1>
+  </header>
+
+  <!-- المشهد 1 -->
+  <div class="book-spread page-1">
+    <div class="text-page">
+      <span class="page-num">صفحة 1</span>
+      <h3>ضفة النهر الهادئ</h3>
+      <p>كان يا مكان، في قديم الزمان، كانت تعيش فتاة طيبة اسمها ليلى مع والدتها على ضفّة نهرٍ هادئ، مياهه تلمع كأنها مرآة من الفضة.</p>
+    </div>
+    <div class="image-page">
+      <img src="1.jpeg" alt="ليلى وأمها على ضفة النهر">
+    </div>
+  </div>
+
+  <!-- المشهد 2 -->
+  <div class="book-spread page-2">
+    <div class="text-page">
+      <span class="page-num">صفحة 2</span>
+      <h3>البيت الدافئ</h3>
+      <p>كان بيتهما صغيرًا لكنه دافئ، مليئًا بالحب والضحكات، والزهور الملونة تحيط به من كل جانب.</p>
+    </div>
+    <div class="image-page">
+      <img src="2.jpeg" alt="البيت الصغير المليء بالزهور">
+    </div>
+  </div>
+
+  <!-- المشهد 3 -->
+  <div class="book-spread page-3">
+    <div class="text-page">
+      <span class="page-num">صفحة 3</span>
+      <h3>وصية الأم</h3>
+      <p>في أحد الأيام، شعرت والدة ليلى بالتعب، وقبل أن تذهب لعملها قالت:</p>
+      <p>«كوني حذِرة يا ليلى، ولا تبتعدي عن النهر.»</p>
+    </div>
+    <div class="image-page">
+      <img src="3.jpeg" alt="أم ليلى توصيها">
+    </div>
+  </div>
+
+  <!-- المشهد 4 -->
+  <div class="book-spread page-4">
+    <div class="text-page">
+      <span class="page-num">صفحة 4</span>
+      <h3>الوعد</h3>
+      <p>هزّت ليلى رأسها ووعدت أمها، ثم لوّحت لها بابتسامة وهي تراقبها تبتعد في الطريق الطويل.</p>
+    </div>
+    <div class="image-page">
+      <img src="4.jpeg" alt="ليلى تلوح لأمها">
+    </div>
+  </div>
+
+  <!-- المشهد 5 -->
+  <div class="book-spread page-5">
+    <div class="text-page">
+      <span class="page-num">صفحة 5</span>
+      <h3>فكرة ليلى</h3>
+      <p>شعرت ليلى بالملل، فنظرت إلى النهر وقالت:</p>
+      <p>«سأصطاد سمكة كبيرة لأمي، لتجد طعامًا شهيًا عندما تعود.»</p>
+    </div>
+    <div class="image-page">
+      <img src="5.jpeg" alt="ليلى تنظر للنهر">
+    </div>
+  </div>
+
+  <!-- المشهد 6 -->
+  <div class="book-spread page-6">
+    <div class="text-page">
+      <span class="page-num">صفحة 6</span>
+      <h3>أغنية رقيقة</h3>
+      <p>جلست ليلى بهدوء قرب الماء، رمَت صنّارتها وبدأت تغنّي أغنية رقيقة للطيور والفراشات من حولها.</p>
+    </div>
+    <div class="image-page">
+      <img src="6.jpeg" alt="ليلى تصطاد وتغني">
+    </div>
+  </div>
+
+  <!-- المشهد 7 -->
+  <div class="book-spread page-7">
+    <div class="text-page">
+      <span class="page-num">صفحة 7</span>
+      <h3>مفاجأة قوية!</h3>
+      <p>فجأة.. اهتزت الصنارة بقوة شديدة! كادت ليلى أن تسقط في الماء من مفاجأة السحب القوي.</p>
+    </div>
+    <div class="image-page">
+      <img src="8.jpeg" alt="الصنارة تهتز بقوة">
+    </div>
+  </div>
+
+  <!-- المشهد 8 -->
+  <div class="book-spread page-8">
+    <div class="text-page">
+      <span class="page-num">صفحة 8</span>
+      <h3>السمكة العجيبة</h3>
+      <p>سحبت ليلى بكل قوتها، وإذا بها تصطاد سمكة كبيرة جداً، قشورها تلمع بألوان قوس قزح الغريبة.</p>
+    </div>
+    <div class="image-page">
+      <img src="9.jpeg" alt="سمكة قوس قزح">
+    </div>
+  </div>
+
+  <!-- المشهد 9 -->
+  <div class="book-spread page-9">
+    <div class="text-page">
+      <span class="page-num">صفحة 9</span>
+      <h3>خاتم الحكمة</h3>
+      <p>وضعت ليلى السمكة على العشب، وعندما فتحتها بحذر لتنظفها، وجدت بداخلها خاتمًا ذهبيًا بنقوش عجيبة!</p>
+    </div>
+    <div class="image-page">
+      <img src="11.jpeg" alt="الخاتم الذهبي العجيب">
+    </div>
+  </div>
+
+  <!-- المشهد 10 -->
+  <div class="book-spread page-10">
+    <div class="text-page">
+      <span class="page-num">صفحة 10</span>
+      <h3>صوت الخاتم</h3>
+      <p>ما إن لمست ليلى الخاتم حتى سمعت صوتًا لطيفًا يقول:</p>
+      <p>«أنا خاتم الحكمة، لا أعمل إلا مع القلوب الطيبة.»</p>
+    </div>
+    <div class="image-page">
+      <img src="10.jpeg" alt="الخاتم يتكلم">
+    </div>
+  </div>
+
+  <!-- المشهد 11 -->
+  <div class="book-spread page-11">
+    <div class="text-page">
+      <span class="page-num">صفحة 11</span>
+      <h3>أمنية واحدة</h3>
+      <p>ارتعشت ليلى قليلًا، ثم تذكرت وصية أمها وطيبتها فابتسمت. قال الخاتم:</p>
+      <p>«سأمنحك أمنية واحدة، فاستخدميها للخير.»</p>
+    </div>
+    <div class="image-page">
+      <img src="12 1.jpeg" alt="الخاتم يمنح أمنية">
+    </div>
+  </div>
+
+  <!-- المشهد 12 -->
+  <div class="book-spread page-12">
+    <div class="text-page">
+      <span class="page-num">صفحة 12</span>
+      <h3>الأمنية الطيبة</h3>
+      <p>فكرت ليلى: «هل أطلب ذهبًا؟ أم قصرًا؟» ثم قالت:</p>
+      <p>«أتمنى أن تكون أمي بخير، وأن نعيش بسعادة ولا نحتاج لأحد.»</p>
+    </div>
+    <div class="image-page">
+      <img src="12.jpeg" alt="ليلى تتمنى الأمنية">
+    </div>
+  </div>
+
+  <!-- المشهد 13 -->
+  <div class="book-spread page-13">
+    <div class="text-page">
+      <span class="page-num">صفحة 13</span>
+      <h3>النور الساحر</h3>
+      <p>أضاء الخاتم بنور باهر غطى كل المكان، ثم اختفى الصوت فجأة وعاد الهدوء إلى ضفة النهر.</p>
+    </div>
+    <div class="image-page">
+      <img src="13.jpeg" alt="ضياء الخاتم الباهر">
+    </div>
+  </div>
+
+  <!-- المشهد 14 -->
+  <div class="book-spread page-14">
+    <div class="text-page">
+      <span class="page-num">صفحة 14</span>
+      <h3>الشفاء والسكينة</h3>
+      <p>ركضت ليلى إلى البيت، لتجد والدتها واقفة بصحة جيدة، والبيت مليء بالطعام الشهي والسكينة.</p>
+    </div>
+    <div class="image-page">
+      <img src="14.jpeg" alt="ليلى وأمها في البيت المليء بالطعام">
+    </div>
+  </div>
+
+  <!-- المشهد 15 -->
+  <div class="book-spread page-15">
+    <div class="text-page">
+      <span class="page-num">صفحة 15</span>
+      <h3>الدرس الجميل 🌸</h3>
+      <p>ومنذ ذلك اليوم، تعلّمت ليلى أن الخير يعود دائمًا لصاحبه، وعاشتا في سعادة وسلام دائمين.</p>
+      <p style="margin-top: 15px; font-weight: bold; color: #e74c3c; text-align: center;">🌸 النهاية 🌸</p>
+    </div>
+    <div class="image-page">
+      <img src="15.jpeg" alt="النهاية السعيدة">
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

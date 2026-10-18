@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lily and the Gift of Health - Layla's Stories</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    body {
+      background-color: #fcf9f2;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    .story-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    /* شريط أعلى الصفحة لأزرار التنقل واللغة */
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .back-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #e67e22;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .back-btn:hover {
+      background-color: #d35400;
+    }
+
+    .lang-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #00cec9;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .lang-btn:hover {
+      background-color: #00b894;
+    }
+
+    /* إطار القصة المتناسق مع الصور العريضة */
+    .book-spread {
+      display: flex;
+      flex-direction: column;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+      margin-bottom: 45px;
+    }
+
+    /* قسم الرسمة العريضة */
+    .image-page {
+      width: 100%;
+      line-height: 0;
+      background-color: #fff;
+    }
+
+    .image-page img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* قسم النص المدمج مع ألوان المشهد */
+    .text-page {
+      padding: 30px 35px;
+      box-sizing: border-box;
+    }
+
+    .page-num {
+      display: inline-block;
+      background: rgba(0, 184, 148, 0.9);
+      color: white;
+      padding: 4px 14px;
+      border-radius: 15px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .text-page h3 {
+      font-size: 1.4rem;
+      margin-top: 0;
+      margin-bottom: 12px;
+      border-bottom: 3px solid #00cec9;
+      padding-bottom: 6px;
+      display: inline-block;
+    }
+
+    .text-page p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      margin: 8px 0;
+      font-weight: 500;
+    }
+
+    /* ألوان الأجواء الخاصة بكل صفحة لقصة ليلى */
+    .page-1 { background: linear-gradient(180deg, #f6e58d 0%, #f9ca24 100%); }
+    .page-1 .text-page { color: #2c3e50; }
+
+    .page-2 { background: linear-gradient(180deg, #dfe4ea 0%, #ced6e0 100%); }
+    .page-2 .text-page { color: #2f3542; }
+
+    .page-3 { background: linear-gradient(180deg, #74b9ff 0%, #0984e3 100%); }
+    .page-3 .text-page { color: #ffffff; }
+    .page-3 .text-page h3 { color: #ffeaa7; }
+
+    .page-4 { background: linear-gradient(180deg, #ff7675 0%, #d63031 100%); }
+    .page-4 .text-page { color: #ffffff; }
+    .page-4 .text-page h3 { color: #ffeaa7; }
+
+    .page-5 { background: linear-gradient(180deg, #55efc4 0%, #00b894 100%); }
+    .page-5 .text-page { color: #2d3436; }
+
+    .page-6 { background: linear-gradient(180deg, #81ecec 0%, #00cec9 100%); }
+    .page-6 .text-page { color: #2d3436; }
+
+    .page-7 { background: linear-gradient(180deg, #a29bfe 0%, #6c5ce7 100%); }
+    .page-7 .text-page { color: #ffffff; }
+    .page-7 .text-page h3 { color: #ffeaa7; }
+
+    .page-8 { background: linear-gradient(180deg, #fab1a0 0%, #e17055 100%); }
+    .page-8 .text-page { color: #2d3436; }
+
+    .page-9 { background: linear-gradient(180deg, #ffeaa7 0%, #fdcb6e 100%); }
+    .page-9 .text-page { color: #2d3436; }
+
+    .page-10 { background: linear-gradient(180deg, #ff9ff3 0%, #f368e0 100%); }
+    .page-10 .text-page { color: #ffffff; }
+
+    .page-11 { background: linear-gradient(180deg, #55efc4 0%, #5f27cd 100%); }
+    .page-11 .text-page { color: #ffffff; }
+    .page-11 .text-page h3 { color: #ffeaa7; }
+
+    .page-12 { background: linear-gradient(180deg, #ffb8b8 0%, #ff4d4d 100%); }
+    .page-12 .text-page { color: #ffffff; }
+    .page-12 .text-page h3 { color: #fff200; }
+  </style>
+</head>
+<body>
+
+<div class="story-container">
+  
+  <div class="nav-bar">
+    <a href="../Untitled-1.html" class="back-btn">⬅️ Back to Home</a>
+    <a href="ليلي ونعمة الصحه.html" class="lang-btn">🌐 قراءة بالعربية</a>
+  </div>
+
+  <header style="text-align: center; margin-bottom: 30px;">
+    <h1 style="color: #2c3e50;">👧 Lily and the Gift of Health</h1>
+  </header>
+
+  <!-- Page 1 -->
+  <div class="book-spread page-1">
+    <div class="image-page">
+      <img src="2.jpeg" alt="Page 1">
+    </div>
+    <div class="text-page">
+      <span class="page-num">Page 1</span>
+      <h3>A New Morning</h3>
+      <p>Every morning, the sun rose gently, and little birds sang in the trees. Children got ready for school, carrying their colorful backpacks.</p>
+      <p>Among them was Lily, a little girl with a lovely smile. But Lily did not like going to school. She wished she could stay home and play all day!</p>
+    </div>
+  </div>
+
+  <!-- Page 2 -->
+  <div class="book-spread page-2">
+    <div class="image-page">
+      <img src="3.jpeg" alt="Page 2">
+    </div>
+    <div class="text-page">
+      <span class="page-num">Page 2</span>
+      <h3>A Strange Wish</h3>
+      <p>Every night before going to sleep, Lily would whisper to herself:</p>
+      <p>“I wish I could get a little sick tomorrow, so I could stay home instead of going to school!”</p>
+      <p>Lily did not understand that being sick could bring pain and tiredness, or that good health was a precious gift to be thankful for every day.</p>
+    </div>
+  </div>
+
+  <!-- Page 3 -->
+  <div class="book-spread page-3">
+    <div class="image-page">
+      <img src="4.jpeg" alt="Page 3">
+    </div>
+    <div class="text-page">
+      <span class="page-num">Page 3</span>
+      <h3>Sudden Pain</h3>
+      <p>One chilly morning, Lily woke up and began getting ready for school as usual.</p>
+      <p>As she put on her shoes, she suddenly felt a sharp pain in her tummy.</p>
+      <p>She placed her little hand on her tummy and whispered, “Oh! What is this pain?”</p>
+      <p>She tried to stand up, but the pain grew worse, and she could not finish getting ready.</p>
+    </div>
+  </div>
+
+  <!-- Page 4 -->
+  <div class="book-spread page-4">
+    <div class="image-page">
+      <img src="5.jpeg" alt="Page 4">
+    </div>
+    <div class="text-page">
+      <span class="page-num">Page 4</span>
+      <h3>Mommy, Help Me!</h3>
+      <p>Lily called out in a trembling voice:</p>
+      <p>“Mommy! Please come quickly! My tummy hurts so much!”</p>
+      <p>Her mother hurried into the room, sat beside her, and held her gently.</p>
+      <p>“I’m here, sweetheart,” Mom said kindly. “Don’t be afraid. We’ll get you some help.” She wiped Lily’s tears and helped her.</p>
+    </div>
+  </div>
+
+  <!-- Page 5 -->
+  <div class="book-spread page-5">
+    <div class="image-page">
+      <img src="6.jpeg" alt="Page 5">
+    </div>
+    <div class="text-page">
+      <span class="page-num">Page 5</span>
+      <h3>To the Hospital</h3>
+      <p>Mom took Lily to the hospital to find out what was causing the pain.</p>
+      <p>On the way, she held her daughter’s hand, comforted her, and prayed for her recovery.</p>
+      <p>“We’ll take good care of you, Lily,” she said. “The doctors will examine you and help you feel better.”</p>
+      <p>Lily felt a little calmer because she was not alone.</p>
+    </div>
+  </div>
+
+  <!-- Page 6 -->
+  <div class="book-spread page-6">
+    <div class="image-page">
+      <img src="7.jpeg" alt="Page 6">
+    </div>
+    <div class="text-page">
+      <span class="page-num">Page 6</span>
+      <h3>The Kind Doctor</h3>
+      <p>At the hospital, the doctor welcomed Lily with a kind smile.</p>
+      <p>He asked her about her pain and carefully examined her with his stethoscope while her mother held her hand.</p>
+      <p>“Well done, Lily! You’ve been very brave,” the doctor said. “We’ll help you feel better.”</p>
+      <p>Lily felt more comfortable knowing that people were taking care of her.</p>
+    </div>
+  </div>
+
+  <!-- Page 7 -->
+  <div class="book-spread page-7">
+    <div class="image-page">
+      <img src="8.jpeg" alt="Page 7">
+    </div>
+    <div class="text-page">
+      <span class="page-num">Page 7</span>
+      <h3>Days in the Hospital</h3>
+      <p>After the examination, the doctor told Mom that Lily needed to stay in the hospital for a few days to receive treatment.</p>
+      <p>Lily was not happy. She missed her bedroom and her toys.</p>
+      <p>“I want to go home, Mommy,” she said sadly.</p>
+      <p>Mom hugged her and replied, “I know, sweetheart. We’ll go home when the doctor says it’s safe.”</p>
+    </div>
+  </div>
+
+  <!-- Page 8 -->
+  <div class="book-spread page-8">
+    <div class="image-page">
+      <img src="11.jpeg" alt="Page 8">
+    </div>
+    <div class="text-page">
+      <span class="page-num">Page 8</span>
+      <h3>A Changed Wish</h3>
+      <p>The days passed slowly. Lily took her medicine and followed the doctor’s instructions.</p>
+      <p>One day, she remembered her old wish and thought sadly:</p>
+      <p>“I wished I would get sick so I could miss school, but I never knew how tiring being sick could be!”</p>
+      <p>Then she told herself, “I hope I get better soon. I’ll thank God for my health.”</p>
+    </div>
+  </div>
+
+  <!-- Page 9 -->
+  <div class="book-spread page-9">
+    <div class="image-page">
+      <img src="9.jpeg" alt="Page 9">
+    </div>
+    <div class="text-page">
+      <span class="page-num">Page 9</span>
+      <h3>My Family Beside Me</h3>
+      <p>Lily was not alone in the hospital.</p>
+      <p>Her mother sat beside her, and her father visited her and told her wonderful stories.</p>
+      <p>Sometimes they laughed together, and sometimes Lily rested in her mother’s arms.</p>
+      <p>Lily felt loved and safe. She learned that having family beside us can make difficult days easier.</p>
+    </div>
+  </div>
+
+  <!-- Page 10 -->
+  <div class="book-spread page-10">
+    <div class="image-page">
+      <img src="10.jpeg" alt="Page 10">
+    </div>
+    <div class="text-page">
+      <span class="page-num">Page 10</span>
+      <h3>Friends Visiting</h3>
+      <p>One lovely day, Lily’s school friends came to visit her.</p>
+      <p>They brought colorful cards, beautiful flowers, and a little gift.</p>
+      <p>Lily was delighted. “I’m so happy you came to see me! I’ve missed you,” she said.</p>
+      <p>Her friends smiled and replied, “We hope you get well soon and come back to play with us!”</p>
+    </div>
+  </div>
+
+  <!-- Page 11 -->
+  <div class="book-spread page-11">
+    <div class="image-page">
+      <img src="12.jpeg" alt="Page 11">
+    </div>
+    <div class="text-page">
+      <span class="page-num">Page 11</span>
+      <h3>Thank God, I'm Getting Better!</h3>
+      <p>By God’s grace, with treatment and her family’s care, Lily began to feel better day by day.</p>
+      <p>Her energy gradually returned, and she smiled more often.</p>
+      <p>“You’re getting better, Lily,” the doctor said. “We’ll let you know when it’s time to go home.”</p>
+      <p>Lily was very happy. “Thank God for the gift of health! I’ll take care of myself.”</p>
+    </div>
+  </div>
+
+  <!-- Page 12 -->
+  <div class="book-spread page-12">
+    <div class="image-page">
+      <img src="13.jpeg" alt="Page 12">
+    </div>
+    <div class="text-page">
+      <span class="page-num">Page 12</span>
+      <h3>Lily's Happy Return 🌸</h3>
+      <p>At last, the day came when Lily returned home!</p>
+      <p>After she had recovered, she woke up on her first day back at school, got dressed, and picked up her colorful backpack with a lovely smile.</p>
+      <p>She sat with her mother and told her what had been bothering her about school, and they agreed to work on those problems together.</p>
+      <p style="margin-top: 15px; font-weight: bold; text-align: center;">Then Lily headed out happily, saying: "Thank God for the gift of health and wellness!" 👧💗</p>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zarda, the Little Bird - Layla's Stories</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    body {
+      background-color: #eef2f5;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    .story-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    /* شريط أعلى الصفحة لأزرار التنقل واللغة */
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .back-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #3498db;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .back-btn:hover {
+      background-color: #2980b9;
+    }
+
+    .lang-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #2ecc71;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .lang-btn:hover {
+      background-color: #27ae60;
+    }
+
+    /* إطار القصة المتناسق مع الصور العريضة */
+    .book-spread {
+      display: flex;
+      flex-direction: column;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+      margin-bottom: 45px;
+    }
+
+    /* قسم الرسمة العريضة */
+    .image-page {
+      width: 100%;
+      line-height: 0;
+    }
+
+    .image-page img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* قسم النص المدمج مع ألوان المشهد */
+    .text-page {
+      padding: 30px 35px;
+      box-sizing: border-box;
+    }
+
+    .page-num {
+      display: inline-block;
+      background: rgba(231, 76, 60, 0.9);
+      color: white;
+      padding: 4px 14px;
+      border-radius: 15px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .text-page h3 {
+      font-size: 1.4rem;
+      margin-top: 0;
+      margin-bottom: 12px;
+      border-bottom: 3px solid #f1c40f;
+      padding-bottom: 6px;
+      display: inline-block;
+    }
+
+    .text-page p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      margin: 8px 0;
+      font-weight: 500;
+    }
+
+    /* ألوان الأجواء الخاصة بكل صفحة */
+    .page-1 { background: linear-gradient(180deg, #a1c349 0%, #7d9e2b 100%); }
+    .page-1 .text-page { color: #172a05; }
+
+    .page-2 { background: linear-gradient(180deg, #789252 0%, #516931 100%); }
+    .page-2 .text-page { color: #f2f7eb; }
+    .page-2 .text-page h3 { color: #ffffff; }
+
+    .page-3 { background: linear-gradient(180deg, #819859 0%, #607241 100%); }
+    .page-3 .text-page { color: #f4f8ed; }
+    .page-3 .text-page h3 { color: #ffffff; }
+
+    .page-4 { background: linear-gradient(180deg, #f3ca40 0%, #e09f1f 100%); }
+    .page-4 .text-page { color: #301f01; }
+
+    .page-5 { background: linear-gradient(180deg, #59a5d8 0%, #386fa4 100%); }
+    .page-5 .text-page { color: #ffffff; }
+    .page-5 .text-page h3 { color: #ffe600; }
+
+    .page-6 { background: linear-gradient(180deg, #70c1b3 0%, #247ba0 100%); }
+    .page-6 .text-page { color: #ffffff; }
+
+    .page-7 { background: linear-gradient(180deg, #1b263b 0%, #0d1b2a 100%); }
+    .page-7 .text-page { color: #e0e1dd; }
+    .page-7 .text-page h3 { color: #ffffff; }
+
+    .page-8 { background: linear-gradient(180deg, #ba8b5b 0%, #8c5a2b 100%); }
+    .page-8 .text-page { color: #fff8f0; }
+
+    .page-9 { background: linear-gradient(180deg, #aacc62 0%, #85a33d 100%); }
+    .page-9 .text-page { color: #1c2b03; }
+
+    .page-10 { background: linear-gradient(180deg, #f7ce3e 0%, #dca11d 100%); }
+    .page-10 .text-page { color: #312000; }
+
+    .page-11 { background: linear-gradient(180deg, #d4a373 0%, #a97142 100%); }
+    .page-11 .text-page { color: #3a1c02; }
+
+    .page-12 { background: linear-gradient(180deg, #f4a261 0%, #e76f51 100%); }
+    .page-12 .text-page { color: #ffffff; }
+    .page-12 .text-page h3 { color: #ffe600; }
+  </style>
+</head>
+<body>
+
+<div class="story-container">
+  
+  <div class="nav-bar">
+    <a href="../Untitled-1.html" class="back-btn">⬅️ Back to Home</a>
+    <a href="زئرده.html" class="lang-btn">🌐 القراءة بالعربية</a>
+  </div>
+
+  <header style="text-align: center; margin-bottom: 30px;">
+    <h1 style="color: #2c3e50;">🐦 Zarda, the Little Bird</h1>
+  </header>
+
+  <!-- Page 1 -->
+  <div class="book-spread page-1">
+    <div class="image-page">
+      <img src="1.jpeg" alt="Page 1">
+    </div>
+    <div class="text-page">
+      <span class="page-num">Page 1</span>
+      <h3>The Playful Little Bird</h3>
+      <p>In a beautiful forest, a little bird named Zarda lived with her mother in a warm nest high up in a big tree.</p>
+      <p>Zarda loved flying, playing, and exploring every corner of the forest.</p>
+      <p>But her mother always told her: "Zarda, don't fly too far from the nest, so you don't get lost."</p>
+      <p>Zarda would reply, "Okay, Mommy!" But deep down, she didn't really listen to her mother's advice.</p>
+    </div>
+  </div>
+
+  <!-- Page 2 -->
+  <div class="book-spread page-2">
+    <div class="image-page">
+      <img src="2.jpeg" alt="Page 2">
+    </div>
+    <div class="text-page">
+      <span class="page-num">Page 2</span>
+      <h3>Where Did Zarda Go?</h3>
+      <p>One day, while Zarda was playing near the nest, she saw a tiny worm crawling through the grass. She said happily, "I'll fly right after it!"</p>
+      <p>She kept following the worm from place to place until she drifted far away from her nest without noticing.</p>
+      <p>Suddenly, Zarda stopped and looked around. Her nest was nowhere to be found! She panicked, "Oh my! Where am I? I've lost my way home!"</p>
+    </div>
+  </div>
+
+  <!-- Page 3 -->
+  <div class="book-spread page-3">
+    <div class="image-page">
+      <img src="Gemini_Generated_Image_jdcnspjdcnspjdcn (3).jpeg" alt="Page 3">
+    </div>
+    <div class="text-page">
+      <span class="page-num">Page 3</span>
+      <h3>The Kind Rabbit</h3>
+      <p>Zarda started walking between the trees, crying quietly. After a short while, she met a friendly rabbit.</p>
+      <p>The rabbit asked, "Why are you crying, little bird?"</p>
+      <p>Zarda said, "I'm lost and I don't know how to get back home."</p>
+      <p>The rabbit thought for a moment and asked, "Do you remember anything near your nest?"</p>
+      <p>Zarda replied, "Yes! There was a yellow flag right beside our nest."</p>
+      <p>The rabbit smiled and said, "Don't worry, I will help you find your way home."</p>
+    </div>
+  </div>
+
+  <!-- Page 4 -->
+  <div class="book-spread page-4">
+    <div class="image-page">
+      <img src="Gemini_Generated_Image_jdcnspjdcnspjdcn (4).jpeg" alt="Page 4">
+    </div>
+    <div class="text-page">
+      <span class="page-num">Page 4</span>
+      <h3>The Hungry Bird</h3>
+      <p>The rabbit and Zarda walked together through the forest searching for the way. After a long walk, Zarda said, "I'm so hungry!"</p>
+      <p>The rabbit replied, "I know a little farm by the river that has delicious corn. Come on, let's grab a bite and then continue our journey."</p>
+      <p>They went to the farm and started eating the corn. But suddenly... they heard a loud noise! "Woof! Get away from the farm!"</p>
+      <p>The guard dog had spotted them and started running right after them.</p>
+    </div>
+  </div>
+
+  <!-- Page 5 -->
+  <div class="book-spread page-5">
+    <div class="image-page">
+      <img src="Gemini_Generated_Image_jdcnspjdcnspjdcn (5).jpeg" alt="Page 5">
+    </div>
+    <div class="text-page">
+      <span class="page-num">Page 5</span>
+      <h3>Into the River!</h3>
+      <p>Terrified, the rabbit and Zarda ran as fast as they could. But without realizing it... they reached the edge of the river! Suddenly, they slipped and fell into the water.</p>
+      <p>Zarda tried to fly, but her wing hit a rock and got injured. She cried out, "Ouch! My wing hurts!"</p>
+      <p>The rabbit was also exhausted and couldn't swim very well.</p>
+    </div>
+  </div>
+
+  <!-- Page 6 -->
+  <div class="book-spread page-6">
+    <div class="image-page">
+      <img src="Gemini_Generated_Image_jdcnspjdcnspjdcn (6).jpeg" alt="Page 6">
+    </div>
+    <div class="text-page">
+      <span class="page-num">Page 6</span>
+      <h3>A Friend from the River</h3>
+      <p>While they were struggling to stay afloat, a friendly dolphin appeared! He quickly swam over, helped them out of the water, and brought them safely to the shore.</p>
+      <p>The rabbit said to Zarda, "I'm so sorry, Zarda. I'm hurt and tired, and I can't go any further. I have to go back home."</p>
+      <p>Zarda felt sad, but she said, "Thank you for helping me." Then, she continued her journey alone.</p>
+    </div>
+  </div>
+
+  <!-- Page 7 -->
+  <div class="book-spread page-7">
+    <div class="image-page">
+      <img src="Gemini_Generated_Image_jdcnspjdcnspjdcn (7).jpeg" alt="Page 7">
+    </div>
+    <div class="text-page">
+      <span class="page-num">Page 7</span>
+      <h3>Night in the Forest</h3>
+      <p>Zarda kept walking and walking until night began to fall. The forest grew dark, and she started feeling scared of wild animals.</p>
+      <p>She looked around until she found a small hollow inside a tree trunk. She thought, "I'll stay here until morning comes."</p>
+      <p>Zarda stepped inside the hollow and fell asleep, tired and frightened.</p>
+    </div>
+  </div>
+
+  <!-- Page 8 -->
+  <div class="book-spread page-8">
+    <div class="image-page">
+      <img src="Gemini_Generated_Image_jdcnspjdcnspjdcn (8).jpeg" alt="Page 8">
+    </div>
+    <div class="text-page">
+      <span class="page-num">Page 8</span>
+      <h3>The Squirrel</h3>
+      <p>When the sun rose, Zarda woke up. Suddenly, she saw a little squirrel staring at her in surprise. He asked, "Who are you? And what are you doing in my home?"</p>
+      <p>Zarda apologized and told him her entire story since she flew away from her nest.</p>
+      <p>The squirrel listened attentively and said, "Don't worry, maybe I can help you!" He thought for a second and added, "My friend the owl knows every corner of this forest. I'll go and ask her!"</p>
+    </div>
+  </div>
+
+  <!-- Page 9 -->
+  <div class="book-spread page-9">
+    <div class="image-page">
+      <img src="Gemini_Generated_Image_jdcnspjdcnspjdcn (9).jpeg" alt="Page 9">
+    </div>
+    <div class="text-page">
+      <span class="page-num">Page 9</span>
+      <h3>The Owl Knows the Way</h3>
+      <p>The squirrel quickly ran off and told the owl about Zarda's story.</p>
+      <p>The owl pondered for a moment and said, "A yellow flag near a bird's nest? I think I know that spot!"</p>
+      <p>Then she said, "Follow me, I'll take you there." Zarda was overjoyed and set off with the squirrel and the owl.</p>
+    </div>
+  </div>
+
+  <!-- Page 10 -->
+  <div class="book-spread page-10">
+    <div class="image-page">
+      <img src="Gemini_Generated_Image_jdcnspjdcnspjdcn (10).jpeg" alt="Page 10">
+    </div>
+    <div class="text-page">
+      <span class="page-num">Page 10</span>
+      <h3>Returning Home</h3>
+      <p>The owl flew above the treetops while the squirrel and Zarda followed her until they reached a familiar place.</p>
+      <p>Suddenly, Zarda saw something bright and yellow glowing among the trees. She shouted with joy, "The yellow flag! That's it! We found my home!"</p>
+      <p>Zarda hurried toward her nest.</p>
+    </div>
+  </div>
+
+  <!-- Page 11 -->
+  <div class="book-spread page-11">
+    <div class="image-page">
+      <img src="Gemini_Generated_Image_jdcnspjdcnspjdcn (11).jpeg" alt="Page 11">
+    </div>
+    <div class="text-page">
+      <span class="page-num">Page 11</span>
+      <h3>Mother's Warm Hug</h3>
+      <p>As soon as Zarda's mother saw her daughter, she flew straight to her and pulled her into a tight hug. The mother was crying happy tears.</p>
+      <p>She said, "Zarda! Where have you been? I was so worried about you!"</p>
+      <p>Zarda wept too and said, "I'm so sorry, Mommy. I was wrong to fly away from the nest and disobey you. I promise I will never go far alone again, and I will always listen to your advice."</p>
+      <p>The mother smiled, held her even closer, and said, "The most important thing is that you're back home safe and sound, my little one."</p>
+    </div>
+  </div>
+
+  <!-- Page 12 -->
+  <div class="book-spread page-12">
+    <div class="image-page">
+      <img src="Gemini_Generated_Image_jdcnspjdcnspjdcn (12).jpeg" alt="Page 12">
+    </div>
+    <div class="text-page">
+      <span class="page-num">Page 12</span>
+      <h3>A Beautiful Lesson 🌸</h3>
+      <p>From that day on, Zarda learned an important lesson: she understood that listening to her parents' advice keeps her safe from danger, and that asking kind friends for help can save us when we're in trouble.</p>
+      <p style="margin-top: 15px; font-weight: bold; text-align: center;">Zarda lived happily with her mother in their cozy little nest... and whenever she wanted to fly far away, she would always say, "I'll ask my Mommy first!" 🐦💗</p>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

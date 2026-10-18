@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luna and the High Hill - Layla's Stories</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    body {
+      background-color: #fcf9f2;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    
+    .story-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .back-btn, .lang-btn {
+      display: inline-block;
+      padding: 10px 22px;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .back-btn { background-color: #e67e22; }
+    .back-btn:hover { background-color: #d35400; }
+
+    .lang-btn { background-color: #00b894; }
+    .lang-btn:hover { background-color: #00a884; }
+
+    /* الإطار العام لكل صفحة */
+    .book-spread {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+      margin-bottom: 45px;
+      align-items: stretch;
+    }
+
+    /* قسم النص */
+    .text-page {
+      padding: 40px 35px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .page-num {
+      align-self: flex-start;
+      background: rgba(0, 184, 148, 0.9);
+      color: white;
+      padding: 4px 14px;
+      border-radius: 15px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .text-page h3 {
+      font-size: 1.45rem;
+      margin-top: 0;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #00cec9;
+      padding-bottom: 8px;
+      display: inline-block;
+    }
+
+    .text-page p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      margin: 10px 0;
+      font-weight: 500;
+    }
+
+    /* قسم الرسمة */
+    .image-page {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background-color: #fff;
+    }
+
+    .image-page img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* تخصيص خلفيات الصفحات بالإنجليزية */
+    .page-1 { background: linear-gradient(135deg, #a8e6cf 0%, #3dccc7 100%); }
+    .page-1 .text-page { color: #0b3c36; }
+
+    .page-2 { background: linear-gradient(135deg, #dcedc1 0%, #a8e6cf 100%); }
+    .page-2 .text-page { color: #1f3b1e; }
+
+    .page-3 { background: linear-gradient(135deg, #ffd3b6 0%, #ffaaa5 100%); }
+    .page-3 .text-page { color: #4a2018; }
+
+    .page-4 { background: linear-gradient(135deg, #ffaaa5 0%, #ff8b94 100%); }
+    .page-4 .text-page { color: #ffffff; }
+    .page-4 .text-page h3 { color: #fff200; }
+
+    .page-5 { background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%); }
+    .page-5 .text-page { color: #0b2545; }
+
+    .page-6 { background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); }
+    .page-6 .text-page { color: #1d3557; }
+
+    .page-7 { background: linear-gradient(135deg, #fbc531 0%, #e1b12c 100%); }
+    .page-7 .text-page { color: #2c2c2c; }
+
+    .page-8 { background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%); }
+    .page-8 .text-page { color: #ffffff; }
+    .page-8 .text-page h3 { color: #ffeaa7; }
+
+    .page-9 { background: linear-gradient(135deg, #55efc4 0%, #00b894 100%); }
+    .page-9 .text-page { color: #13271e; }
+
+    .page-10 { background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%); }
+    .page-10 .text-page { color: #2d3436; }
+
+    .page-11 { background: linear-gradient(135deg, #fab1a0 0%, #e17055 100%); }
+    .page-11 .text-page { color: #ffffff; }
+    .page-11 .text-page h3 { color: #ffeaa7; }
+
+    .page-12 { background: linear-gradient(135deg, #ff9ff3 0%, #f368e0 100%); }
+    .page-12 .text-page { color: #ffffff; }
+    .page-12 .text-page h3 { color: #fff200; }
+
+    @media (max-width: 768px) {
+      .book-spread { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="story-container">
+
+  <div class="nav-bar">
+    <a href="../Untitled-1.html" class="back-btn">⬅️ Back to Home</a>
+    <a href="luna_ar.html" class="lang-btn">🌐 قراءة بالعربية</a>
+  </div>
+
+  <header style="text-align: center; margin-bottom: 30px;">
+    <h1 style="color: #2c3e50;">⛰️ Luna and the High Hill</h1>
+  </header>
+
+  <!-- Page 1 -->
+  <div class="book-spread page-1">
+    <div class="text-page">
+      <span class="page-num">Page 1</span>
+      <h3>Page 1 — A Hill on the Horizon</h3>
+      <p>In a small and beautiful village with colorful houses and children's laughter filling its alleys, a smart little girl named Luna lived.</p>
+      <p>Behind the village, there was a tall, beautiful green hill that everyone could see from afar as it hugged the sky.</p>
+      <p>Luna loved looking at it every morning from her window, wondering with curiosity and innocence: "I wonder what the world looks like from up there?"</p>
+    </div>
+    <div class="image-page">
+      <img src="1.jpeg" alt="Page 1">
+    </div>
+  </div>
+
+  <!-- Page 2 -->
+  <div class="book-spread page-2">
+    <div class="text-page">
+      <span class="page-num">Page 2</span>
+      <h3>Page 2 — Luna's Dream</h3>
+      <p>Not everyone was interested in the hill; some villagers thought climbing it was long and tiring, while others were busy with their daily chores.</p>
+      <p>As for Luna, she loved it very much and dreamed of what lay beyond.</p>
+      <p>She would tell herself with a wide smile: "When I reach its peak, I will see things I've never seen before!"</p>
+    </div>
+    <div class="image-page">
+      <img src="2.jpeg" alt="Page 2">
+    </div>
+  </div>
+
+  <!-- Page 3 -->
+  <div class="book-spread page-3">
+    <div class="text-page">
+      <span class="page-num">Page 3</span>
+      <h3>Page 3 — A Little Bit Hard</h3>
+      <p>Every morning, Luna went to school with her colorful backpack full of dreams.</p>
+      <p>She loved reading very much and enjoyed drawing fairy tales, but she sometimes found "math" a bit difficult.</p>
+      <p>She would look at the many numbers in her notebook and think in quiet confusion: "How will I solve this complex problem?"</p>
+    </div>
+    <div class="image-page">
+      <img src="3.jpeg" alt="Page 3">
+    </div>
+  </div>
+
+  <!-- Page 4 -->
+  <div class="book-spread page-4">
+    <div class="text-page">
+      <span class="page-num">Page 4</span>
+      <h3>Page 4 — Mistakes Help Us</h3>
+      <p>One day, when Luna made a mistake solving a math problem, she felt a little sad and lowered her head.</p>
+      <p>But her kind teacher walked over, smiled tenderly, and said:</p>
+      <p>"It's okay, Luna! We all make mistakes sometimes. A mistake is not the end, but a real opportunity to learn something new."</p>
+      <p>Luna began to think about her teacher's wonderful words, and comfort settled in her heart.</p>
+    </div>
+    <div class="image-page">
+      <img src="4.jpeg" alt="Page 4">
+    </div>
+  </div>
+
+  <!-- Page 5 -->
+  <div class="book-spread page-5">
+    <div class="text-page">
+      <span class="page-num">Page 5</span>
+      <h3>Page 5 — A Different Drawing</h3>
+      <p>During an art class one day, the teacher asked the children to draw a place they loved dearly.</p>
+      <p>Some children drew their warm homes, while others drew the school playground where they played happily.</p>
+      <p>As for Luna, she drew the large green hill decorating her village's horizon.</p>
+      <p>It was a different and unconventional drawing, but it was special and very close to her heart.</p>
+    </div>
+    <div class="image-page">
+      <img src="5.jpeg" alt="Page 5">
+    </div>
+  </div>
+
+  <!-- Page 6 -->
+  <div class="book-spread page-6">
+    <div class="text-page">
+      <span class="page-num">Page 6</span>
+      <h3>Page 6 — A Dream on the Wall</h3>
+      <p>When the teacher saw the drawing, she asked Luna admiringly:</p>
+      <p>"Why did you choose to draw the hill, Luna?"</p>
+      <p>Luna replied with sparkling eyes: "Because when I climb it, I feel like I'm getting closer to my dreams."</p>
+      <p>The teacher admired the sincerity of her words and the skill of her drawing, proudly hanging it on the front classroom wall. Luna felt extremely happy and proud of herself.</p>
+    </div>
+    <div class="image-page">
+      <img src="6.jpeg" alt="Page 6">
+    </div>
+  </div>
+
+  <!-- Page 7 -->
+  <div class="book-spread page-7">
+    <div class="text-page">
+      <span class="page-num">Page 7</span>
+      <h3>Page 7 — A Trip to the Hill</h3>
+      <p>A few days later, the school announced a pleasant surprise: an exploratory trip to the green hill, accompanied by the teacher and supervisors!</p>
+      <p>The children rejoiced and their laughter filled the air, but some felt scared because the path looked long with small stones.</p>
+      <p>Luna looked at the high hill bravely, then told her determination:</p>
+      <p>"I will try! I can climb step by step and I will never give up."</p>
+    </div>
+    <div class="image-page">
+      <img src="8.jpeg" alt="Page 7">
+    </div>
+  </div>
+
+  <!-- Page 8 -->
+  <div class="book-spread page-8">
+    <div class="text-page">
+      <span class="page-num">Page 8</span>
+      <h3>Page 8 — A Little Rest</h3>
+      <p>The children started climbing actively with the teacher along the safe path.</p>
+      <p>After some time, Luna felt tired, so she sat in a quiet spot to rest and sip some cold water.</p>
+      <p>She saw some of her friends ahead, and others climbing quietly near her, and thought to herself:</p>
+      <p>"There is no race; each of us has our own pace in this life."</p>
+    </div>
+    <div class="image-page">
+      <img src="7.jpeg" alt="Page 8">
+    </div>
+  </div>
+
+  <!-- Page 9 -->
+  <div class="book-spread page-9">
+    <div class="text-page">
+      <span class="page-num">Page 9</span>
+      <h3>Page 9 — Another Step</h3>
+      <p>After catching her breath and regaining her energy, Luna stood up with confidence once more.</p>
+      <p>She looked at the climbing path ahead, took a deep breath, and continued her journey with her group in an optimistic spirit.</p>
+      <p>She repeated encouraging words to herself:</p>
+      <p>"It doesn't matter if I'm the first to arrive; what matters is that I try and complete my path to the end!"</p>
+    </div>
+    <div class="image-page">
+      <img src="9.jpeg" alt="Page 9">
+    </div>
+  </div>
+
+  <!-- Page 10 -->
+  <div class="book-spread page-10">
+    <div class="text-page">
+      <span class="page-num">Page 10</span>
+      <h3>Page 10 — From the Peak</h3>
+      <p>Finally, after hard work and determination, Luna and her friend reached the summit of the hill!</p>
+      <p>She looked around with great astonishment and magic; the small village houses looked like colorful toys, and its winding paths appeared among the tall green trees.</p>
+      <p>Luna smiled with overwhelming joy and said:</p>
+      <p>"I did it! The path was hard and tiring, but I never gave up."</p>
+      <p>Her heart flooded with unspeakable happiness because she tried and reached what she dreamed of.</p>
+    </div>
+    <div class="image-page">
+      <img src="10.jpeg" alt="Page 10">
+    </div>
+  </div>
+
+  <!-- Page 11 -->
+  <div class="book-spread page-11">
+    <div class="text-page">
+      <span class="page-num">Page 11</span>
+      <h3>Page 11 — Math Step by Step</h3>
+      <p>Since that wonderful day, whenever Luna faced a difficult math problem at school, she remembered her inspiring journey to the hilltop.</p>
+      <p>She began reading the problem with complete calm, trying to solve it step by step and with patience.</p>
+      <p>And if she made a mistake again, she no longer felt sad at all; instead, she tried again with persistence or gently asked for help.</p>
+    </div>
+    <div class="image-page">
+      <img src="11.jpeg" alt="Page 11">
+    </div>
+  </div>
+
+  <!-- Page 12 -->
+  <div class="book-spread page-12">
+    <div class="text-page">
+      <span class="page-num">Page 12</span>
+      <h3>Page 12 — Every Step Matters 🌸</h3>
+      <p>Luna learned a great lesson in her life: reaching big dreams does not require speed, but patience and continuous effort.</p>
+      <p>She didn't need to be the fastest or best at everything; it was enough for her to learn, experiment, and trust her own abilities.</p>
+      <p style="margin-top: 15px; font-weight: bold;">💡 Remember, my little one: You don't always have to be first; every step you learn something new from is a great success in itself! 👧💗</p>
+    </div>
+    <div class="image-page">
+      <img src="12.jpeg" alt="Page 12">
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

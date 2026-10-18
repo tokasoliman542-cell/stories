@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ليلى ونعمة الصحة - قصص ليلى للأطفال</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-color: #fcf9f2;
+      font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    
+    .story-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 25px;
+      padding: 10px 22px;
+      background-color: #e67e22;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    /* الإطار العام لكل صفحة */
+    .book-spread {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+      margin-bottom: 45px;
+      align-items: stretch;
+    }
+
+    /* قسم النص */
+    .text-page {
+      padding: 40px 35px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .page-num {
+      align-self: flex-start;
+      background: rgba(230, 126, 34, 0.9);
+      color: white;
+      padding: 4px 14px;
+      border-radius: 15px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .text-page h3 {
+      font-size: 1.45rem;
+      margin-top: 0;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #f39c12;
+      padding-bottom: 8px;
+      display: inline-block;
+    }
+
+    .text-page p {
+      font-size: 1.2rem;
+      line-height: 1.9;
+      margin: 10px 0;
+      font-weight: 600;
+    }
+
+    /* قسم الرسمة (مكان الصورة) */
+    .image-page {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background-color: #fff;
+    }
+
+    .image-page img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* =========================================================
+        تخصيص خلفية كل صفحة وألوان النصوص لتناسب قصة ليلى الصحية
+        ========================================================= */
+
+    /* الصفحة 1: صباح جديد وهادئ */
+    .page-1 {
+      background: linear-gradient(135deg, #f6e58d 0%, #f9ca24 100%);
+    }
+    .page-1 .text-page { color: #2c3e50; }
+
+    /* الصفحة 2: أمنية غريبة قبل النوم */
+    .page-2 {
+      background: linear-gradient(135deg, #dfe4ea 0%, #ced6e0 100%);
+    }
+    .page-2 .text-page { color: #2f3542; }
+
+    /* الصفحة 3: ألم مفاجئ (صباح بارد) */
+    .page-3 {
+      background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+    }
+    .page-3 .text-page { color: #ffffff; }
+    .page-3 .text-page h3 { color: #ffeaa7; }
+
+    /* الصفحة 4: ماما، ساعديني! */
+    .page-4 {
+      background: linear-gradient(135deg, #ff7675 0%, #d63031 100%);
+    }
+    .page-4 .text-page { color: #ffffff; }
+    .page-4 .text-page h3 { color: #ffeaa7; }
+
+    /* الصفحة 5: إلى المستشفى */
+    .page-5 {
+      background: linear-gradient(135deg, #55efc4 0%, #00b894 100%);
+    }
+    .page-5 .text-page { color: #2d3436; }
+
+    /* الصفحة 6: الطبيب اللطيف */
+    .page-6 {
+      background: linear-gradient(135deg, #81ecec 0%, #00cec9 100%);
+    }
+    .page-6 .text-page { color: #2d3436; }
+
+    /* الصفحة 7: أيام في المستشفى */
+    .page-7 {
+      background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
+    }
+    .page-7 .text-page { color: #ffffff; }
+    .page-7 .text-page h3 { color: #ffeaa7; }
+
+    /* الصفحة 8: أمنية تغيّرت بندم */
+    .page-8 {
+      background: linear-gradient(135deg, #fab1a0 0%, #e17055 100%);
+    }
+    .page-8 .text-page { color: #2d3436; }
+
+    /* الصفحة 9: عائلتي بجانبي */
+    .page-9 {
+      background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+    }
+    .page-9 .text-page { color: #2d3436; }
+
+    /* الصفحة 10: زيارة الأصدقاء */
+    .page-10 {
+      background: linear-gradient(135deg, #ff9ff3 0%, #f368e0 100%);
+    }
+    .page-10 .text-page { color: #ffffff; }
+
+    /* الصفحة 11: الحمد لله، أنا أتحسن */
+    .page-11 {
+      background: linear-gradient(135deg, #55efc4 0%, #5f27cd 100%);
+    }
+    .page-11 .text-page { color: #ffffff; }
+    .page-11 .text-page h3 { color: #ffeaa7; }
+
+    /* الصفحة 12: عودة ليلى السعيدة والنهاية */
+    .page-12 {
+      background: linear-gradient(135deg, #ffb8b8 0%, #ff4d4d 100%);
+    }
+    .page-12 .text-page { color: #ffffff; }
+    .page-12 .text-page h3 { color: #fff200; }
+
+    /* التكيف مع شاشات الموبايل */
+    @media (max-width: 768px) {
+      .book-spread {
+        grid-template-columns: 1fr;
+      }
+      .image-page img {
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="story-container">
+
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+    <a href="../index.html" class="back-btn" style="margin-bottom: 0;">⬅️ العودة للرئيسية</a>
+    <a href="lily_en.html" style="background-color: #00cec9; color: white; padding: 10px 18px; text-decoration: none; border-radius: 8px; font-weight: bold;">🌐 Read in English</a>
+  </div>
+
+  <header style="text-align: center; margin-bottom: 30px;">
+    <h1 style="color: #2c3e50;">👧 ليلى ونعمة الصحة</h1>
+  </header>
+
+  <!-- الصفحة 1 -->
+  <div class="book-spread page-1">
+    <div class="text-page">
+      <span class="page-num">صفحة 1</span>
+      <h3>الصفحة 1 — صباحٌ جديد</h3>
+      <p>في كل صباح، كانت الشمس تشرق بلطف، وتغرد العصافير فوق الأشجار. يستعد الأطفال للذهاب إلى المدرسة، ويحملون حقائبهم الملوّنة.</p>
+      <p>ومن بينهم كانت ليلى، طفلة صغيرة ذات ابتسامة جميلة. لكنها لم تكن تحب الذهاب إلى المدرسة، وكانت تتمنى لو تستطيع البقاء في البيت واللعب طوال اليوم!</p>
+    </div>
+    <div class="image-page">
+      <img src="2.jpeg" alt="الصفحة 1: صباح جديد">
+    </div>
+  </div>
+
+  <!-- الصفحة 2 -->
+  <div class="book-spread page-2">
+    <div class="text-page">
+      <span class="page-num">صفحة 2</span>
+      <h3>الصفحة 2 — أمنية غريبة</h3>
+      <p>في كل ليلة، قبل أن تنام، كانت ليلى تقول لنفسها:</p>
+      <p>«ليتني أمرض قليلًا غدًا، حتى أبقى في البيت ولا أذهب إلى المدرسة!»</p>
+      <p>لم تكن ليلى تعرف أن المرض قد يجعلها تشعر بالألم والتعب، وأن الصحة نعمة ثمينة تستحق الشكر كل يوم.</p>
+    </div>
+    <div class="image-page">
+      <img src="3.jpeg" alt="الصفحة 2: أمنية غريبة">
+    </div>
+  </div>
+
+  <!-- الصفحة 3 -->
+  <div class="book-spread page-3">
+    <div class="text-page">
+      <span class="page-num">صفحة 3</span>
+      <h3>الصفحة 3 — ألمٌ مفاجئ</h3>
+      <p>في صباح بارد، استيقظت ليلى وبدأت تستعد للمدرسة كعادتها.</p>
+      <p>وبينما كانت ترتدي حذاءها، شعرت فجأة بألم شديد في بطنها.</p>
+      <p>وضعت يدها الصغيرة على بطنها وهمست: «آه! ما هذا الألم؟»</p>
+      <p>حاولت الوقوف، لكن الألم ازداد، فلم تستطع إكمال استعدادها.</p>
+    </div>
+    <div class="image-page">
+      <img src="4.jpeg" alt="الصفحة 3: ألم مفاجئ">
+    </div>
+  </div>
+
+  <!-- الصفحة 4 -->
+  <div class="book-spread page-4">
+    <div class="text-page">
+      <span class="page-num">صفحة 4</span>
+      <h3>الصفحة 4 — ماما، ساعديني!</h3>
+      <p>نادَت ليلى بصوت مرتجف:</p>
+      <p>«ماما! تعالي بسرعة، بطني تؤلمني كثيرًا!»</p>
+      <p>أسرعت أمها إلى الغرفة، وجلست بجانبها واحتضنتها برفق.</p>
+      <p>قالت الأم بحنان: «أنا هنا يا حبيبتي. لا تخافي، سنطلب المساعدة.» مسحت دموع ليلى وساعدتها.</p>
+    </div>
+    <div class="image-page">
+      <img src="5.jpeg" alt="الصفحة 4: ماما ساعديني">
+    </div>
+  </div>
+
+  <!-- الصفحة 5 -->
+  <div class="book-spread page-5">
+    <div class="text-page">
+      <span class="page-num">صفحة 5</span>
+      <h3>الصفحة 5 — إلى المستشفى</h3>
+      <p>أخذت الأم ليلى إلى المستشفى لتعرف سبب الألم.</p>
+      <p>وفي الطريق، أمسكت بيد ابنتها، وراحت تطمئنها وتدعو الله أن يمنّ عليها بالشفاء.</p>
+      <p>قالت لها: «سنعتني بكِ يا ليلى، وسيقوم الأطباء بفحصكِ ومساعدتكِ.»</p>
+      <p>شعرت ليلى ببعض الطمأنينة، لأنها لم تكن وحدها.</p>
+    </div>
+    <div class="image-page">
+      <img src="6.jpeg" alt="الصفحة 5: إلى المستشفى">
+    </div>
+  </div>
+
+  <!-- الصفحة 6 -->
+  <div class="book-spread page-6">
+    <div class="text-page">
+      <span class="page-num">صفحة 6</span>
+      <h3>الصفحة 6 — الطبيب اللطيف</h3>
+      <p>في المستشفى، استقبل الطبيب ليلى بابتسامة لطيفة.</p>
+      <p>سألها عن ألمها، ثم فحصها بعناية باستخدام سماعته الطبية، بينما كانت أمها تمسك بيدها.</p>
+      <p>قال الطبيب: «أحسنتِ يا ليلى! لقد كنتِ شجاعة. سنساعدكِ حتى تشعري بتحسن.»</p>
+      <p>شعرت ليلى بالراحة عندما عرفت أن هناك من يعتني بها.</p>
+    </div>
+    <div class="image-page">
+      <img src="7.jpeg" alt="الصفحة 6: الطبيب اللطيف">
+    </div>
+  </div>
+
+  <!-- الصفحة 7 -->
+  <div class="book-spread page-7">
+    <div class="text-page">
+      <span class="page-num">صفحة 7</span>
+      <h3>الصفحة 7 — أيام في المستشفى</h3>
+      <p>بعد الفحص، أخبر الطبيب الأم أن ليلى تحتاج إلى البقاء في المستشفى بضعة أيام لتلقي العلاج.</p>
+      <p>لم تكن ليلى سعيدة؛ فقد اشتاقت إلى غرفتها وألعابها.</p>
+      <p>قالت بحزن: «أريد العودة إلى البيت يا ماما.»</p>
+      <p>احتضنتها أمها وقالت: «أعرف يا حبيبتي، وسنعود عندما يسمح الطبيب بذلك.»</p>
+    </div>
+    <div class="image-page">
+      <img src="8.jpeg" alt="الصفحة 7: أيام في المستشفى">
+    </div>
+  </div>
+
+  <!-- الصفحة 8 -->
+  <div class="book-spread page-8">
+    <div class="text-page">
+      <span class="page-num">صفحة 8</span>
+      <h3>الصفحة 8 — أمنية تغيّرت</h3>
+      <p>مرّت الأيام ببطء، وكانت ليلى تتناول دواءها وتتبع تعليمات الطبيب.</p>
+      <p>وفي أحد الأيام، تذكرت أمنيتها القديمة، وفكرت بحزن:</p>
+      <p>«كنت أتمنى أن أمرض حتى لا أذهب إلى المدرسة، لكنني لم أعرف كم يمكن أن يكون المرض متعبًا!»</p>
+      <p>ثم قالت: «أتمنى أن أتعافى قريبًا لأشكر الله على صحتي.»</p>
+    </div>
+    <div class="image-page">
+      <img src="11.jpeg" alt="الصفحة 8: أمنية تغيرت">
+    </div>
+  </div>
+
+  <!-- الصفحة 9 -->
+  <div class="book-spread page-9">
+    <div class="text-page">
+      <span class="page-num">صفحة 9</span>
+      <h3>الصفحة 9 — عائلتي بجانبي</h3>
+      <p>لم تكن ليلى وحدها في المستشفى.</p>
+      <p>كانت أمها تجلس بجانبها، وكان أبوها يزورها ويحكي لها قصصًا ممتعة.</p>
+      <p>أحيانًا كانوا يضحكون معًا، وأحيانًا كانت ليلى تستريح بين ذراعي أمها.</p>
+      <p>شعرت ليلى بالحب والدفء، وعرفت أن وجود العائلة بجانبنا يجعل الأيام الصعبة أسهل.</p>
+    </div>
+    <div class="image-page">
+      <img src="9.jpeg" alt="الصفحة 9: عائلتي بجانبي">
+    </div>
+  </div>
+
+  <!-- الصفحة 10 -->
+  <div class="book-spread page-10">
+    <div class="text-page">
+      <span class="page-num">صفحة 10</span>
+      <h3>الصفحة 10 — أصدقائي يزورونني</h3>
+      <p>وفي يوم جميل، زار أصدقاء ليلى من المدرسة.</p>
+      <p>أحضروا معها بطاقات ملونة، وورودًا جميلة، وهدية صغيرة.</p>
+      <p>فرحت ليلى كثيرًا، وقالت: «كم أنا سعيدة لأنكم جئتم لزيارتي! اشتقت إليكم.»</p>
+      <p>ابتسم أصدقاؤها وقالوا: «نتمنى أن تتعافي سريعًا وتعودي للعب معنا!»</p>
+    </div>
+    <div class="image-page">
+      <img src="10.jpeg" alt="الصفحة 10: أصدقائي يزورونني">
+    </div>
+  </div>
+
+  <!-- الصفحة 11 -->
+  <div class="book-spread page-11">
+    <div class="text-page">
+      <span class="page-num">صفحة 11</span>
+      <h3>الصفحة 11 — الحمد لله، أنا أتحسن!</h3>
+      <p>بفضل الله، ومع العلاج واهتمام أسرتها، بدأت ليلى تشعر بتحسن يومًا بعد يوم.</p>
+      <p>عاد إليها نشاطها تدريجيًا، وأصبحت تبتسم أكثر.</p>
+      <p>قال الطبيب: «أنتِ تتحسنين يا ليلى، وسنخبركِ عندما يحين وقت العودة إلى البيت.»</p>
+      <p>فرحت ليلى وقالت: «الحمد لله على نعمة الصحة! سأحافظ عليها دائمًا.»</p>
+    </div>
+    <div class="image-page">
+      <img src="12.jpeg" alt="الصفحة 11: الحمد لله أنا أتحسن">
+    </div>
+  </div>
+
+  <!-- الصفحة 12 -->
+  <div class="book-spread page-12">
+    <div class="text-page">
+      <span class="page-num">صفحة 12</span>
+      <h3>الصفحة 12 — عودة ليلى السعيدة 🌸</h3>
+      <p>وأخيرًا، جاء اليوم الذي عادت فيه ليلى إلى بيتها!</p>
+      <p>وبعد أن تعافت، استيقظت في أول يوم لها بالمدرسة، وارتدت ملابسها وحملت حقيبتها الملونة بابتسامة جميلة.</p>
+      <p>جلست مع أمها، وأخبرتها بما كان يزعجها في المدرسة، واتفقا على حلّ تلك الأمور معًا.</p>
+      <p style="margin-top: 15px; font-weight: bold;">ثم خرجت ليلى وهي تقول بسعادة: «الحمد لله على نعمة الصحة والعافية!» 👧💗</p>
+    </div>
+    <div class="image-page">
+      <img src="13.jpeg" alt="الصفحة 12: عودة ليلى السعيدة">
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
